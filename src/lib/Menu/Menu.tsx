@@ -11,12 +11,18 @@ export interface MenuProps {
   onSelect?: (selectedIndex: number) => void;
 }
 
+export interface IMenuContext {
+  index: string;
+  onSelect?: (selectedIndex: string) => void;
+  mode?: MenuMode;
+  defaultOpenSubMenus?: string[];  
+}
+
 const Menu: React.FC<MenuProps> = (props) => {
   const { className, mode, style, children, defaultIndex } = props;
+  // const [ currentActive, setActive ] = useState(defaultIndex)
 
-  const classes = classNames('lzj-menus', className, {
-    'menu-veritical': mode === 'vertical'
-  })
+  const classes = classNames('lzj-menus', className, `menu-${mode}`)
 
   return (
     <ul

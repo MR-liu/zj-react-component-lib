@@ -9,9 +9,10 @@ function App() {
   console.log(position)
   return (
     <div className="App">
-      <Menu>
+      <Menu mode="vertical">
         <MenuItem>1</MenuItem>
         <MenuItem>2</MenuItem>
+        <MenuItem>3</MenuItem>
       </Menu>
     </div>
   );
