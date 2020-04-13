@@ -9,10 +9,10 @@ function App() {
   console.log(position)
   return (
     <div className="App">
-      <Menu mode="vertical">
-        <MenuItem index={0}>1</MenuItem>
-        <MenuItem index={1}>2</MenuItem>
-        <MenuItem index={2}>3</MenuItem>
+      <Menu mode="vertical" defaultIndex = {2}>
+        <MenuItem>1</MenuItem>
+        <MenuItem>2</MenuItem>
+        <MenuItem>3</MenuItem>
       </Menu>
     </div>
   );

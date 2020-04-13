@@ -1,5 +1,7 @@
 import React, { CSSProperties, createContext, useState } from 'react';
 import classNames from 'classnames';
+import FunctionComponentElement from 'react';
+import { MenuItemProps } from './MenuItem';
 
 
 type MenuMode = 'horizontal' | 'vertical';
@@ -35,6 +37,22 @@ const Menu: React.FC<MenuProps> = (props) => {
     onSelect: handleClick,
   }
 
+  const renderChildren = () => {
+    return React.Children.map(children, (child, index) => {
+      const childElement = child as React.FunctionComponentElement<MenuItemProps>
+      const { type = {name : ''}} = childElement
+      const { name = '' } = type;
+
+      if (name === 'MenuItem' || name === 'SubMenu') {
+        return React.cloneElement(childElement, {
+          index: +index
+        })
+      } else {
+        throw "非MenuItem类型的不允许传入";
+      }
+    })
+  }
+
   return (
     <ul
       className={classes}
@@ -42,7 +60,7 @@ const Menu: React.FC<MenuProps> = (props) => {
     >
       <MenuContext.Provider value={passedContext}>
         {
-          children
+          renderChildren()
         }
       </MenuContext.Provider>
     </ul>
