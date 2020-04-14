@@ -3,6 +3,8 @@ import useMousePosition from "./hooks/useMousePosition";
 
 import Menu from "./lib/Menu/Menu";
 import MenuItem from "./lib/Menu/MenuItem";
+import SubMenu from "./lib/Menu/SubMenu";
+
 
 function App() {
   const position = useMousePosition();
@@ -13,6 +15,11 @@ function App() {
         <MenuItem>1</MenuItem>
         <MenuItem>2</MenuItem>
         <MenuItem>3</MenuItem>
+        <SubMenu title="jshgdjhksgfj">
+          <MenuItem>1</MenuItem>
+          <MenuItem>2</MenuItem>
+          <MenuItem>3</MenuItem>
+        </SubMenu>
       </Menu>
     </div>
   );
